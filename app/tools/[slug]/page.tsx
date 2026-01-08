@@ -1,42 +1,51 @@
 import { notFound } from 'next/navigation';
 import tools from '@/data/tools.json';
-import { ToolHeader } from '@/components/tools/ToolHeader';
-import { ToolForm } from '@/components/tools/ToolForm';
-import type { Tool } from '@/types';
+import { Tool } from '@/types';
+import ToolForm from '@/components/tools/ToolForm';
 
-interface PageProps {
+interface ToolPageProps {
   params: {
     slug: string;
   };
 }
 
-export default function ToolDetailPage({ params }: PageProps) {
-  const tool = (tools as Tool[]).find((t) => t.slug === params.slug);
+export default async function ToolPage({ params }: ToolPageProps) {
+  // Find the tool matching the slug
+  const tool = tools.find((t: Tool) => t.slug === params.slug);
 
+  // If tool is not found, trigger 404
   if (!tool) {
     notFound();
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-        <ToolHeader tool={tool} />
-        <div className="mt-8 grid gap-8 lg:grid-cols-1">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Run Tool</h2>
-            <ToolForm tool={tool} />
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        {/* Tool Header */}
+        <div className="bg-white shadow rounded-lg p-6 mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+              {tool.category}
+            </span>
           </div>
+          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+            {tool.name}
+          </h1>
+          <p className="mt-4 text-lg text-gray-500">
+            {tool.longDescription}
+          </p>
         </div>
+
+        {/* Dynamic Tool Form */}
+        <ToolForm inputs={tool.inputs} toolName={tool.name} />
       </div>
     </div>
   );
 }
 
-export function generateMetadata({ params }: PageProps) {
-  const tool = (tools as Tool[]).find((t) => t.slug === params.slug);
-  
-  return {
-    title: tool ? `${tool.name} | SEO Workflows` : 'Tool Not Found',
-    description: tool?.shortDescription,
-  };
+// Generate static params for all tools to ensure static generation where possible
+export async function generateStaticParams() {
+  return tools.map((tool: Tool) => ({
+    slug: tool.slug,
+  }));
 }

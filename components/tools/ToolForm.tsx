@@ -1,175 +1,132 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { ResultPanel } from '@/components/tools/ResultPanel';
-import type { Tool } from '@/types';
+import ResultPanel from './ResultPanel';
 import { Loader2 } from 'lucide-react';
 
+interface ToolInput {
+  key: string;
+  label: string;
+  type: 'text' | 'textarea' | 'number' | 'select';
+  placeholder?: string;
+  options?: string[];
+}
+
 interface ToolFormProps {
-  tool: Tool;
+  inputs: ToolInput[];
+  toolName: string;
 }
 
-interface FormValues {
-  [key: string]: string;
-}
-
-export function ToolForm({ tool }: ToolFormProps) {
-  const [values, setValues] = useState<FormValues>({});
-  const [result, setResult] = useState<Record<string, unknown> | null>(null);
+export default function ToolForm({ inputs, toolName }: ToolFormProps) {
+  const [formData, setFormData] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState<any>(null);
 
-  const handleChange = (key: string, value: string) => {
-    setValues((prev) => ({ ...prev, [key]: value }));
-    setError(null);
-  };
-
-  const generateMockResult = (): Record<string, unknown> => {
-    const mockResult: Record<string, unknown> = {
-      success: true,
-      tool: tool.name,
-      timestamp: new Date().toISOString(),
-      inputs: { ...values },
-    };
-
-    // Generate category-specific mock results
-    switch (tool.category) {
-      case 'Data Analysis':
-        mockResult.metrics = {
-          totalKeywords: Math.floor(Math.random() * 1000) + 100,
-          avgVolume: Math.floor(Math.random() * 50000) + 1000,
-          difficultyScore: (Math.random() * 100).toFixed(1),
-        };
-        break;
-      case 'Relevance':
-        mockResult.scores = {
-          contentScore: (Math.random() * 100).toFixed(1),
-          keywordDensity: (Math.random() * 5).toFixed(2) + '%',
-          readabilityScore: Math.floor(Math.random() * 100) + 1,
-        };
-        break;
-      case 'Technical':
-        mockResult.technical = {
-          status: 200,
-          loadTime: (Math.random() * 3).toFixed(2) + 's',
-          mobileFriendly: Math.random() > 0.3,
-          issuesFound: Math.floor(Math.random() * 10),
-        };
-        break;
-      case 'Authority':
-        mockResult.authority = {
-          domainAuthority: Math.floor(Math.random() * 100) + 1,
-          pageAuthority: Math.floor(Math.random() * 100) + 1,
-          backlinks: Math.floor(Math.random() * 10000) + 100,
-        };
-        break;
-      default:
-        mockResult.message = 'Tool executed successfully with mock data.';
-    }
-
-    return mockResult;
+  const handleInputChange = (key: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
 
   const handleRun = async () => {
-    // Validate required fields
-    const missingFields = tool.inputs.filter((input) => {
-      const value = values[input.key];
-      return !value || value.trim() === '';
-    });
-
-    if (missingFields.length > 0) {
-      setError(`Please fill in all fields: ${missingFields.map((f) => f.label).join(', ')}`);
-      return;
-    }
-
     setIsLoading(true);
-    setError(null);
     setResult(null);
 
-    // Simulate async operation
+    // Simulate asynchronous API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    try {
-      const mockResult = generateMockResult();
-      setResult(mockResult);
-    } catch (err) {
-      setError('An error occurred while running the tool. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    // Mock result generation
+    const mockResult = {
+      status: 'success',
+      tool: toolName,
+      timestamp: new Date().toISOString(),
+      inputs: formData,
+      output: {
+        score: Math.floor(Math.random() * 100),
+        insights: `Analysis complete for inputs provided.`,
+        recommendations: [
+          'Improve meta description length.',
+          'Add missing alt tags to images.',
+          'Increase internal linking density.',
+        ],
+      },
+    };
+
+    setResult(mockResult);
+    setIsLoading(false);
   };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        {tool.inputs.map((input) => (
-          <div key={input.key} className="space-y-2">
-            <label
-              htmlFor={input.key}
-              className="block text-sm font-medium text-gray-700"
-            >
+    <div className="bg-white shadow rounded-lg p-6">
+      <h2 className="text-xl font-semibold text-gray-900 mb-4">Configuration</h2>
+      
+      <form onSubmit={(e) => { e.preventDefault(); handleRun(); }} className="space-y-6">
+        {inputs.map((input) => (
+          <div key={input.key}>
+            <label htmlFor={input.key} className="block text-sm font-medium text-gray-700">
               {input.label}
             </label>
-            {input.type === 'textarea' ? (
-              <Textarea
-                id={input.key}
-                placeholder={input.placeholder || `Enter ${input.label.toLowerCase()}`}
-                value={values[input.key] || ''}
-                onChange={(e) => handleChange(input.key, e.target.value)}
-                rows={4}
-              />
-            ) : input.type === 'select' ? (
-              <select
-                id={input.key}
-                value={values[input.key] || ''}
-                onChange={(e) => handleChange(input.key, e.target.value)}
-                className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-              >
-                <option value="">Select an option...</option>
-                {input.options?.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <Input
-                id={input.key}
-                type={input.type}
-                placeholder={input.placeholder || `Enter ${input.label.toLowerCase()}`}
-                value={values[input.key] || ''}
-                onChange={(e) => handleChange(input.key, e.target.value)}
-              />
-            )}
+            <div className="mt-1">
+              {input.type === 'textarea' ? (
+                <textarea
+                  id={input.key}
+                  rows={4}
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                  placeholder={input.placeholder}
+                  value={formData[input.key] || ''}
+                  onChange={(e) => handleInputChange(input.key, e.target.value)}
+                />
+              ) : input.type === 'select' ? (
+                <select
+                  id={input.key}
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                  value={formData[input.key] || ''}
+                  onChange={(e) => handleInputChange(input.key, e.target.value)}
+                >
+                  <option value="">Select an option...</option>
+                  {input.options?.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type={input.type}
+                  id={input.key}
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2"
+                  placeholder={input.placeholder}
+                  value={formData[input.key] || ''}
+                  onChange={(e) => handleInputChange(input.key, e.target.value)}
+                />
+              )}
+            </div>
           </div>
         ))}
-      </div>
 
-      {error && (
-        <div className="rounded-md bg-red-50 p-4">
-          <p className="text-sm text-red-800">{error}</p>
+        <div className="pt-2">
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="animate-spin -ml-1 mr-2 h-4 w-4" />
+                Running...
+              </>
+            ) : (
+              'Run Analysis'
+            )}
+          </button>
         </div>
-      )}
+      </form>
 
-      <Button
-        onClick={handleRun}
-        disabled={isLoading}
-        className="w-full sm:w-auto"
-      >
-        {isLoading ? (
-          <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Running...
-          </>
-        ) : (
-          'Run Tool'
-        )}
-      </Button>
-
-      {result && <ResultPanel result={result} />}
+      {/* Result Panel */}
+      {isLoading || result ? (
+        <div className="mt-8">
+          <ResultPanel result={result} isLoading={isLoading} />
+        </div>
+      ) : null}
     </div>
   );
 }
