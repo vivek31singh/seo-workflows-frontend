@@ -1,203 +1,114 @@
-import Link from 'next/link';
-import { Twitter, Github, Linkedin, Mail } from 'lucide-react';
+import Link from "next/link";
+import { Github, Twitter, Linkedin } from "lucide-react";
+
+const footerLinks = {
+  product: [
+    { href: "/tools", label: "SEO Tools" },
+    { href: "/resources", label: "Resources" },
+    { href: "/resources/glossary", label: "Glossary" },
+    { href: "/resources/blog", label: "Blog" },
+  ],
+  company: [
+    { href: "/company/about", label: "About Us" },
+    { href: "/company/contact", label: "Contact" },
+  ],
+  legal: [
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/terms", label: "Terms of Service" },
+  ],
+};
+
+const socialLinks = [
+  { href: "#", icon: Github, label: "GitHub" },
+  { href: "#", icon: Twitter, label: "Twitter" },
+  { href: "#", icon: Linkedin, label: "LinkedIn" },
+];
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-12">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {/* Company Info */}
-            <div>
-              <div className="mb-4 flex items-center space-x-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
-                  <span className="text-sm font-bold text-white">SW</span>
-                </div>
-                <span className="text-lg font-bold text-gray-900">SEO Workflows</span>
+    <footer className="border-t bg-gray-50">
+      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-4">
+          {/* Brand Column */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600">
+                <span className="text-lg font-bold text-white">S</span>
               </div>
-              <p className="text-sm text-gray-600">
-                A comprehensive directory of free SEO tools and resources to help you optimize your digital presence.
-              </p>
+              <span className="text-lg font-bold text-gray-900">SEO Workflows</span>
             </div>
+            <p className="text-sm text-gray-600">
+              Your comprehensive hub for free SEO tools and resources.
+            </p>
+          </div>
 
-            {/* Tools Section */}
-            <div>
-              <h3 className="mb-4 text-sm font-semibold text-gray-900">
-                Tools
-              </h3>
-              <ul className="space-y-3">
-                <li>
+          {/* Product Links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold text-gray-900">Product</h3>
+            <ul className="space-y-3">
+              {footerLinks.product.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href="/tools"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
+                    href={link.href}
+                    className="text-sm text-gray-600 transition-colors hover:text-gray-900"
                   >
-                    All Tools
+                    {link.label}
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/tools?category=Data+Analysis"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Data Analysis
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/tools?category=Relevance"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Relevance
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/tools?category=Technical"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Technical SEO
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/tools?category=Authority"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Authority
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            {/* Resources Section */}
-            <div>
-              <h3 className="mb-4 text-sm font-semibold text-gray-900">
-                Resources
-              </h3>
-              <ul className="space-y-3">
-                <li>
+          {/* Company Links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold text-gray-900">Company</h3>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href="/resources/glossary"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
+                    href={link.href}
+                    className="text-sm text-gray-600 transition-colors hover:text-gray-900"
                   >
-                    Glossary
+                    {link.label}
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/resources/chatbots"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    AI Chatbots
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/resources/blog"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/resources/extensions"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Extensions
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            {/* Company Section */}
-            <div>
-              <h3 className="mb-4 text-sm font-semibold text-gray-900">
-                Company
-              </h3>
-              <ul className="space-y-3">
-                <li>
+          {/* Legal & Social */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold text-gray-900">Legal</h3>
+            <ul className="mb-6 space-y-3">
+              {footerLinks.legal.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href="/company/about"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
+                    href={link.href}
+                    className="text-sm text-gray-600 transition-colors hover:text-gray-900"
                   >
-                    About Us
+                    {link.label}
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/company/contact"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms"
-                    className="text-sm text-gray-600 transition-colors hover:text-indigo-600"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
+              ))}
+            </ul>
+            <div className="flex space-x-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="text-gray-400 transition-colors hover:text-gray-600"
+                >
+                  <social.icon className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 py-6">
-          <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-            <p className="text-sm text-gray-600">
-              © {new Date().getFullYear()} SEO Workflows. All rights reserved.
-            </p>
-
-            {/* Social Links */}
-            <div className="flex items-center space-x-4">
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-200 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-200 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-200 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:contact@example.com"
-                className="rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-200 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
+        {/* Copyright */}
+        <div className="mt-12 border-t pt-8 text-center text-sm text-gray-600">
+          <p>© {new Date().getFullYear()} SEO Workflows. All rights reserved.</p>
         </div>
       </div>
     </footer>
