@@ -1,35 +1,41 @@
 import Link from 'next/link';
-import { Tool } from '@/types';
-import { ArrowRight } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 interface ToolCardProps {
-  tool: Tool;
+  name: string;
+  slug: string;
+  shortDescription: string;
+  category: string;
 }
 
-export function ToolCard({ tool }: ToolCardProps) {
-  const categoryColors: Record<string, string> = {
-    'Data Analysis': 'bg-purple-100 text-purple-800',
-    'Relevance': 'bg-blue-100 text-blue-800',
-    'Technical': 'bg-green-100 text-green-800',
-    'Authority': 'bg-orange-100 text-orange-800',
-  };
-
-  const categoryColor = categoryColors[tool.category] || 'bg-gray-100 text-gray-800';
-
+export default function ToolCard({ name, slug, shortDescription, category }: ToolCardProps) {
   return (
-    <Link href={`/tools/${tool.slug}`}>
-      <div className="group p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200 cursor-pointer">
-        <div className="flex items-start justify-between mb-3">\n          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${categoryColor}`}>
-            {tool.category}
-          </span>
-          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+    <Link href={`/tools/${slug}`} className="block">
+      <div className="group h-full overflow-hidden rounded-lg border border-border bg-background transition-all hover:shadow-lg hover:shadow-primary/10">
+        <div className="p-6">
+          {/* Category Badge */}
+          <div className="mb-4">
+            <span className="inline-flex items-center rounded-full border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
+              {category}
+            </span>
+          </div>
+
+          {/* Tool Name */}
+          <h3 className="mb-2 text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+            {name}
+          </h3>
+
+          {/* Description */}
+          <p className="mb-4 text-sm text-muted-foreground line-clamp-2">
+            {shortDescription}
+          </p>
+
+          {/* Footer */}
+          <div className="flex items-center text-sm font-medium text-primary">
+            Try Tool
+            <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </div>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-          {tool.name}
-        </h3>
-        <p className="text-sm text-gray-600 line-clamp-2">
-          {tool.shortDescription}
-        </p>
       </div>
     </Link>
   );

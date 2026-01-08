@@ -1,81 +1,85 @@
 import Link from 'next/link';
-import { BarChart3, Target, Code, Award } from 'lucide-react';
-import { clsx } from 'clsx';
+import { BarChart, Cpu, Database, Globe, Lock, TrendingUp } from 'lucide-react';
 
 const categories = [
   {
     name: 'Data Analysis',
-    description: 'Analyze traffic, keywords, and performance metrics',
-    icon: BarChart3,
-    color: 'bg-blue-500',
+    description: 'Analyze and interpret your SEO data with powerful tools',
+    icon: Database,
     href: '/tools?category=Data Analysis',
-  },
-  {
-    name: 'Relevance',
-    description: 'Optimize content relevance and topical authority',
-    icon: Target,
-    color: 'bg-emerald-500',
-    href: '/tools?category=Relevance',
+    color: 'bg-blue-500',
   },
   {
     name: 'Technical',
-    description: 'Audit technical SEO and site performance',
-    icon: Code,
-    color: 'bg-purple-500',
+    description: 'Optimize your website\'s technical performance',
+    icon: Cpu,
     href: '/tools?category=Technical',
+    color: 'bg-green-500',
+  },
+  {
+    name: 'Relevance',
+    description: 'Improve content relevance and keyword targeting',
+    icon: Globe,
+    href: '/tools?category=Relevance',
+    color: 'bg-purple-500',
   },
   {
     name: 'Authority',
-    description: 'Build backlinks and domain authority',
-    icon: Award,
-    color: 'bg-orange-500',
+    description: 'Build domain authority and backlink profiles',
+    icon: TrendingUp,
     href: '/tools?category=Authority',
+    color: 'bg-orange-500',
+  },
+  {
+    name: 'Competitor Analysis',
+    description: 'Spy on competitors and find opportunities',
+    icon: BarChart,
+    href: '/tools?category=Competitor Analysis',
+    color: 'bg-red-500',
+  },
+  {
+    name: 'Security',
+    description: 'Check and improve your website security',
+    icon: Lock,
+    href: '/tools?category=Security',
+    color: 'bg-indigo-500',
   },
 ];
 
-export function CategoryGrid() {
+export default function CategoryGrid() {
   return (
-    <section className="py-20 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Browse by Category
+    <section className="bg-muted/50 py-16">
+      <div className="container mx-auto px-4">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-foreground">
+            Explore by Category
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            Find the right tools for every aspect of your SEO strategy
+          <p className="text-lg text-muted-foreground">
+            Find the right tools for your SEO needs across different categories
           </p>
         </div>
-        
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:max-w-none lg:grid-cols-2">
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => {
             const Icon = category.icon;
             return (
               <Link
                 key={category.name}
                 href={category.href}
-                className="group relative flex items-center gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-slate-300"
+                className="group relative overflow-hidden rounded-lg border border-border bg-background p-6 transition-all hover:shadow-lg hover:shadow-primary/10"
               >
-                <div className={clsx(
-                  'flex h-16 w-16 items-center justify-center rounded-xl',
-                  category.color,
-                  'group-hover:scale-105 transition-transform'
-                )}>
-                  <Icon className="h-8 w-8 text-white" aria-hidden="true" />
-                </div>
-                
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    {category.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-slate-500">
-                    {category.description}
-                  </p>
-                </div>
-                
-                <div className="text-slate-400 group-hover:text-blue-600 transition-colors">
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                <div className="flex items-start space-x-4">
+                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${category.color} text-white`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {category.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {category.description}
+                    </p>
+                  </div>
                 </div>
               </Link>
             );

@@ -1,114 +1,135 @@
-import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import Link from 'next/link';
+import { Github, Twitter, Linkedin } from 'lucide-react';
 
-const footerLinks = {
-  product: [
-    { href: "/tools", label: "SEO Tools" },
-    { href: "/resources", label: "Resources" },
-    { href: "/resources/glossary", label: "Glossary" },
-    { href: "/resources/blog", label: "Blog" },
-  ],
-  company: [
-    { href: "/company/about", label: "About Us" },
-    { href: "/company/contact", label: "Contact" },
-  ],
-  legal: [
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Service" },
-  ],
-};
-
-const socialLinks = [
-  { href: "#", icon: Github, label: "GitHub" },
-  { href: "#", icon: Twitter, label: "Twitter" },
-  { href: "#", icon: Linkedin, label: "LinkedIn" },
-];
-
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="border-t bg-gray-50">
-      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-4">
+    <footer className="border-t border-border bg-background">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600">
-                <span className="text-lg font-bold text-white">S</span>
-              </div>
-              <span className="text-lg font-bold text-gray-900">SEO Workflows</span>
-            </div>
-            <p className="text-sm text-gray-600">
-              Your comprehensive hub for free SEO tools and resources.
+            <h3 className="text-lg font-semibold text-foreground">SEO Workflows</h3>
+            <p className="text-sm text-muted-foreground">
+              Your comprehensive directory of free SEO tools and resources to optimize your digital presence.
             </p>
           </div>
 
-          {/* Product Links */}
+          {/* Tools Column */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900">Product</h3>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 transition-colors hover:text-gray-900"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Tools</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/tools" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  All Tools
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=Data Analysis" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Data Analysis
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=Technical" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Technical SEO
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools?category=Authority" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Authority Building
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* Resources Column */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 transition-colors hover:text-gray-900"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/resources/glossary" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Glossary
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources/chatbots" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  AI Chatbots
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources/extensions" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Extensions
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Legal & Social */}
+          {/* Company Column */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-gray-900">Legal</h3>
-            <ul className="mb-6 space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-600 transition-colors hover:text-gray-900"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="mb-4 text-sm font-semibold text-foreground">Company</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/company/about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/company/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Terms of Service
+                </Link>
+              </li>
             </ul>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="text-gray-400 transition-colors hover:text-gray-600"
-                >
-                  <social.icon className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 border-t pt-8 text-center text-sm text-gray-600">
-          <p>© {new Date().getFullYear()} SEO Workflows. All rights reserved.</p>
+        {/* Bottom Bar */}
+        <div className="mt-12 flex flex-col items-center justify-between border-t border-border pt-8 md:flex-row">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} SEO Workflows. All rights reserved.
+          </p>
+          <div className="mt-4 flex space-x-4 md:mt-0">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Twitter"
+            >
+              <Twitter className="h-5 w-5" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

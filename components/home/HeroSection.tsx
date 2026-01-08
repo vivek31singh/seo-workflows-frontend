@@ -1,47 +1,88 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight, Search, Zap, Shield } from 'lucide-react';
 
-export function HeroSection() {
+export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white py-20 sm:py-32">
-      <div className="absolute inset-0 -z-10 opacity-50">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-100 via-slate-50 to-transparent" />
+    <section className="relative overflow-hidden bg-background">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 -z-10 opacity-5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-background to-background" />
       </div>
-      
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-6 inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-            <Zap className="mr-2 h-4 w-4" />
+
+      <div className="container mx-auto px-4 py-20 md:py-32">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Badge */}
+          <div className="mb-6 inline-flex items-center rounded-full border border-border bg-background px-4 py-1.5 text-sm text-muted-foreground">
+            <span className="mr-2 flex h-2 w-2 rounded-full bg-primary" />
             Free SEO Tools & Resources
           </div>
-          
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
-            Master Your SEO Workflow
+
+          {/* Heading */}
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+            Supercharge Your SEO with{' '}
+            <span className="text-primary">Free Tools</span>
           </h1>
-          
-          <p className="mt-6 text-lg leading-8 text-slate-600 sm:text-xl">
-            Access a comprehensive directory of free SEO tools, technical resources, 
-            and expert guides. Optimize your website, analyze data, and build authority 
-            without breaking the bank.
+
+          {/* Subheading */}
+          <p className="mb-8 text-lg text-muted-foreground md:text-xl">
+            Access our comprehensive directory of SEO tools and resources. Analyze data, 
+            improve rankings, and grow your online presence—all for free.
           </p>
-          
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link href="/tools">
-              <Button variant="primary" size="lg" className="group">
-                Explore Tools
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/tools"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            >
+              Explore Tools
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
-            <Link href="/resources">
-              <Button variant="secondary" size="lg">
-                View Resources
-              </Button>
+            <Link
+              href="/resources"
+              className="inline-flex items-center justify-center rounded-lg border border-border bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            >
+              Browse Resources
             </Link>
           </div>
-          
-          <div className="mt-12 text-sm text-slate-500">
-            <p>12+ Free Tools • No Sign-up Required • Instant Results</p>
+
+          {/* Features Grid */}
+          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="rounded-lg border border-border bg-background p-6 text-left">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Search className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold text-foreground">
+                Powerful Tools
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Access a growing collection of SEO tools designed to help you analyze and optimize your website.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-border bg-background p-6 text-left">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Zap className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold text-foreground">
+                Lightning Fast
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                All tools run directly in your browser with no server delays. Get instant results every time.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-border bg-background p-6 text-left">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Shield className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold text-foreground">
+                Privacy First
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Your data stays in your browser. We never collect, store, or share your information.
+              </p>
+            </div>
           </div>
         </div>
       </div>
