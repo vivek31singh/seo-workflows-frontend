@@ -1,123 +1,27 @@
 {
   "glossary": [
-    {
-      "term": "301 Redirect",
-      "definition": "A permanent server-side redirect that points one URL to another. It passes most of the link equity (ranking power) from the old URL to the new one, making it essential for SEO when moving or renaming pages."
-    },
-    {
-      "term": "Backlink",
-      "definition": "A link from one website to another. Backlinks are also known as inbound links or incoming links and are a key ranking factor in search engine algorithms, serving as votes of confidence for your content."
-    },
-    {
-      "term": "Canonical Tag",
-      "definition": "An HTML element (rel=\"canonical\") that tells search engines which version of a page is the master or preferred one when there are multiple similar or duplicate versions available."
-    },
-    {
-      "term": "CTR (Click-Through Rate)",
-      "definition": "The percentage of users who click on a specific link out of the total users who view a page, email, or advertisement. In SEO, it measures the effectiveness of title tags and meta descriptions."
-    },
-    {
-      "term": "DA (Domain Authority)",
-      "definition": "A search engine ranking score developed by Moz that predicts how likely a website is to rank on search engine result pages (SERPs). Scores range from 1 to 100, with higher scores indicating greater ranking ability."
-    },
-    {
-      "term": "Featured Snippet",
-      "definition": "A highlighted excerpt of text that appears at the top of Google's organic search results, providing a quick answer to the user's query. It's also known as position zero and can significantly increase visibility."
-    },
-    {
-      "term": "Indexing",
-      "definition": "The process by which search engines add web pages to their database. After crawling, search engines analyze and store the content of pages so they can be retrieved and displayed in search results."
-    },
-    {
-      "term": "Keyword Density",
-      "definition": "The percentage of times a keyword appears on a web page compared to the total number of words on the page. While important for relevance, excessive keyword density can be flagged as keyword stuffing."
-    },
-    {
-      "term": "Meta Description",
-      "definition": "A brief summary of a web page's content that appears in search engine results below the title tag. While not a direct ranking factor, it influences click-through rates and user engagement."
-    },
-    {
-      "term": "SERP (Search Engine Results Page)",
-      "definition": "The page displayed by a search engine in response to a user's query. SERPs include organic results, paid advertisements, featured snippets, knowledge panels, and other rich results."
-    },
-    {
-      "term": "Sitemap",
-      "definition": "An XML file that lists all important pages of a website, helping search engines discover and crawl content more efficiently. It can include metadata like last modified dates and priority levels."
-    },
-    {
-      "term": "Title Tag",
-      "definition": "An HTML element that specifies the title of a web page. It appears in browser tabs, search engine results, and social media shares, making it crucial for both SEO and user experience."
-    }
+    {"term": "SEO", "definition": "Search Engine Optimization - the practice of improving website visibility in search engine results."},
+    {"term": "SERP", "definition": "Search Engine Results Page - the page displayed by a search engine in response to a query."},
+    {"term": "Backlink", "definition": "A link from one website to another, important for SEO authority."},
+    {"term": "Keyword", "definition": "A word or phrase that describes the content of a webpage and is used by search engines for indexing."},
+    {"term": "Meta Description", "definition": "A brief summary of a webpage's content that appears in search results."},
+    {"term": "Alt Text", "definition": "Alternative text description of an image, used for accessibility and SEO."},
+    {"term": "Canonical URL", "definition": "The preferred version of a webpage when there are duplicate or similar content pages."},
+    {"term": "Domain Authority", "definition": "A search engine ranking score that predicts how likely a website is to rank on search engine result pages."}
   ],
   "chatbots": [
-    {
-      "title": "ChatGPT",
-      "description": "Advanced AI assistant by OpenAI capable of generating SEO content, analyzing keywords, providing strategy recommendations, and helping with technical SEO explanations and code examples."
-    },
-    {
-      "title": "Claude",
-      "description": "Anthropic's AI assistant known for nuanced analysis, ideal for content optimization, SEO strategy planning, and comprehensive competitor research with detailed reasoning."
-    },
-    {
-      "title": "Perplexity AI",
-      "description": "AI-powered search engine that provides cited answers, perfect for SEO research, content verification, and finding authoritative sources to back up your claims."
-    },
-    {
-      "title": "Bing Chat / Copilot",
-      "description": "Microsoft's AI-powered chat interface integrated with Bing search, offering real-time web data for SEO trend analysis and content inspiration with source citations."
-    },
-    {
-      "title": "Jasper AI",
-      "description": "AI writing assistant specifically designed for marketing teams, with templates optimized for SEO-friendly blog posts, social media content, and ad copy."
-    },
-    {
-      "title": "Copy.ai",
-      "description": "AI content generation tool with SEO-focused templates for blog posts, product descriptions, and landing page copy that helps maintain keyword relevance while writing."
-    }
+    {"title": "ChatGPT", "description": "AI assistant that can help with content creation, SEO strategy, and code generation."},
+    {"title": "Claude", "description": "AI assistant helpful for analyzing content and generating SEO recommendations."},
+    {"title": "Bing Chat", "description": "Microsoft's AI-powered search chatbot for answering SEO questions."}
   ],
   "blog": [
-    {
-      "slug": "complete-guide-to-keyword-research",
-      "title": "The Complete Guide to Keyword Research in 2024",
-      "excerpt": "Learn how to find the right keywords for your SEO strategy. We cover free and paid tools, search intent analysis, and techniques to uncover high-value opportunities your competitors are missing.",
-      "date": "Jan 15, 2024",
-      "readTime": "12 min read"
-    },
-    {
-      "slug": "technical-seo-checklist",
-      "title": "Technical SEO Checklist: 15 Essential Elements",
-      "excerpt": "A comprehensive technical SEO audit checklist covering site speed, mobile optimization, crawlability, indexing, schema markup, and other critical factors that impact your search rankings.",
-      "date": "Jan 10, 2024",
-      "readTime": "8 min read"
-    },
-    {
-      "slug": "link-building-strategies",
-      "title": "10 White-Hat Link Building Strategies That Work",
-      "excerpt": "Discover proven, ethical link building techniques that can improve your domain authority without risking penalties. From digital PR to broken link building, we've got you covered.",
-      "date": "Jan 5, 2024",
-      "readTime": "10 min read"
-    },
-    {
-      "slug": "optimizing-for-core-web-vitals",
-      "title": "Optimizing for Core Web Vitals: A Practical Guide",
-      "excerpt": "Core Web Vitals are official ranking factors. Learn how to improve LCP, FID, and CLS with actionable optimization techniques for better user experience and search performance.",
-      "date": "Dec 28, 2023",
-      "readTime": "15 min read"
-    },
-    {
-      "slug": "featured-snippet-optimization",
-      "title": "How to Optimize Content for Featured Snippets",
-      "excerpt": "Position zero is prime real estate on Google. This guide shows you how to structure your content to capture featured snippets and dramatically increase your organic click-through rates.",
-      "date": "Dec 20, 2023",
-      "readTime": "9 min read"
-    },
-    {
-      "slug": "local-seo-guide",
-      "title": "Local SEO: The Ultimate Guide for Businesses",
-      "excerpt": "Dominate local search results with our comprehensive guide to local SEO. Learn about Google Business Profile optimization, local citations, reviews, and proximity-based ranking factors.",
-      "date": "Dec 15, 2023",
-      "readTime": "11 min read"
-    }
+    {"slug": "seo-basics", "title": "SEO Basics: Getting Started", "excerpt": "Learn the fundamentals of search engine optimization and how to improve your rankings."},
+    {"slug": "keyword-research", "title": "Complete Guide to Keyword Research", "excerpt": "Discover how to find and target the right keywords for your business."},
+    {"slug": "technical-seo", "title": "Technical SEO Checklist", "excerpt": "Essential technical elements to check for optimal website performance."}
   ],
-  "extensions": []
+  "extensions": [
+    {"name": "Lighthouse", "description": "Google's tool for auditing website performance, accessibility, and SEO.", "link": "https://chrome.google.com/webstore/detail/lighthouse"},
+    {"name": "SEO Minion", "description": "All-in-one SEO tool for keyword analysis, on-page SEO, and link checking.", "link": "https://chrome.google.com/webstore/detail/seo-minion"},
+    {"name": "MozBar", "description": "Free SEO toolbar that provides instant metrics while viewing any page.", "link": "https://chrome.google.com/webstore/detail/mozbar"}
+  ]
 }

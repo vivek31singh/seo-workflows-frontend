@@ -1,1 +1,164 @@
-[]
+[
+  {
+    "slug": "keyword-density",
+    "name": "Keyword Density Checker",
+    "category": "Relevance",
+    "shortDescription": "Analyze keyword usage and density in your content.",
+    "longDescription": "This tool scans your text content and calculates the frequency of specific keywords, helping you optimize your content for SEO without keyword stuffing.",
+    "inputs": [
+      {
+        "key": "content",
+        "label": "Content Text",
+        "type": "textarea",
+        "placeholder": "Paste your article or content here..."
+      },
+      {
+        "key": "keyword",
+        "label": "Target Keyword",
+        "type": "text",
+        "placeholder": "Enter your primary keyword"
+      }
+    ]
+  },
+  {
+    "slug": "meta-tag-generator",
+    "name": "Meta Tag Generator",
+    "category": "Technical",
+    "shortDescription": "Generate optimized meta tags for your web pages.",
+    "longDescription": "Create SEO-friendly title tags, meta descriptions, and Open Graph tags that improve click-through rates from search results.",
+    "inputs": [
+      {
+        "key": "title",
+        "label": "Page Title",
+        "type": "text",
+        "placeholder": "Enter your page title (50-60 characters recommended)"
+      },
+      {
+        "key": "description",
+        "label": "Meta Description",
+        "type": "textarea",
+        "placeholder": "Enter your meta description (150-160 characters recommended)"
+      },
+      {
+        "key": "keywords",
+        "label": "Keywords",
+        "type": "text",
+        "placeholder": "Comma-separated keywords"
+      }
+    ]
+  },
+  {
+    "slug": "backlink-analyzer",
+    "name": "Backlink Analyzer",
+    "category": "Authority",
+    "shortDescription": "Analyze the quality and quantity of backlinks pointing to a domain.",
+    "longDescription": "Get insights into your backlink profile including domain authority, anchor text distribution, and toxic link identification.",
+    "inputs": [
+      {
+        "key": "domain",
+        "label": "Domain URL",
+        "type": "text",
+        "placeholder": "https://example.com"
+      },
+      {
+        "key": "depth",
+        "label": "Analysis Depth",
+        "type": "select",
+        "options": ["Top 100", "Top 500", "Top 1000", "All"]
+      }
+    ]
+  },
+  {
+    "slug": "heading-structure",
+    "name": "Heading Structure Analyzer",
+    "category": "Technical",
+    "shortDescription": "Check if your heading hierarchy is properly structured.",
+    "longDescription": "Ensure your H1, H2, H3 tags follow a logical hierarchy for better SEO and accessibility.",
+    "inputs": [
+      {
+        "key": "html",
+        "label": "HTML Content",
+        "type": "textarea",
+        "placeholder": "Paste your HTML content here..."
+      }
+    ]
+  },
+  {
+    "slug": "serp-simulator",
+    "name": "SERP Preview Simulator",
+    "category": "Relevance",
+    "shortDescription": "Preview how your page will appear in search results.",
+    "longDescription": "See exactly how your title and meta description will look on Google, Bing, and other search engines.",
+    "inputs": [
+      {
+        "key": "title",
+        "label": "Title Tag",
+        "type": "text",
+        "placeholder": "Your page title"
+      },
+      {
+        "key": "description",
+        "label": "Meta Description",
+        "type": "textarea",
+        "placeholder": "Your meta description"
+      },
+      {
+        "key": "url",
+        "label": "URL",
+        "type": "text",
+        "placeholder": "https://example.com/page"
+      }
+    ]
+  },
+  {
+    "slug": "image-alt-checker",
+    "name": "Image Alt Text Checker",
+    "category": "Technical",
+    "shortDescription": "Find images missing alt text on your website.",
+    "longDescription": "Identify images without alt attributes or with poor alt text descriptions for better accessibility and SEO.",
+    "inputs": [
+      {
+        "key": "html",
+        "label": "HTML Content",
+        "type": "textarea",
+        "placeholder": "Paste your HTML content to scan for images..."
+      }
+    ]
+  },
+  {
+    "slug": "word-counter",
+    "name": "Word Counter",
+    "category": "Relevance",
+    "shortDescription": "Count words, characters, and sentences in your content.",
+    "longDescription": "Get detailed statistics about your content including word count, character count, sentence count, and reading time.",
+    "inputs": [
+      {
+        "key": "content",
+        "label": "Content",
+        "type": "textarea",
+        "placeholder": "Paste your content here..."
+      }
+    ]
+  },
+  {
+    "slug": "robots-txt-generator",
+    "name": "Robots.txt Generator",
+    "category": "Technical",
+    "shortDescription": "Generate a robots.txt file for your website.",
+    "longDescription": "Create a proper robots.txt file to control which parts of your site search engines can crawl.",
+    "inputs": [
+      {
+        "key": "allowAll",
+        "label": "Allow All Bots",
+        "type": "select",
+        "options": ["Yes", "No"]
+      },
+      {
+        "key": "sitemap",
+        "label": "Sitemap URL",
+        "type": "text",
+        "placeholder": "https://example.com/sitemap.xml"
+      }
+    ]
+  }
+]

@@ -1,44 +1,36 @@
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { ArrowRight } from 'lucide-react';
 import { Tool } from '@/types';
+import { ArrowRight } from 'lucide-react';
 
 interface ToolCardProps {
   tool: Tool;
 }
 
-const categoryColors: Record<string, string> = {
-  'Data Analysis': 'bg-blue-100 text-blue-700 border-blue-200',
-  Relevance: 'bg-green-100 text-green-700 border-green-200',
-  Technical: 'bg-orange-100 text-orange-700 border-orange-200',
-  Authority: 'bg-purple-100 text-purple-700 border-purple-200',
-};
+export function ToolCard({ tool }: ToolCardProps) {
+  const categoryColors: Record<string, string> = {
+    'Data Analysis': 'bg-purple-100 text-purple-800',
+    'Relevance': 'bg-blue-100 text-blue-800',
+    'Technical': 'bg-green-100 text-green-800',
+    'Authority': 'bg-orange-100 text-orange-800',
+  };
 
-export const ToolCard = ({ tool }: ToolCardProps) => {
-  const categoryColorClass = categoryColors[tool.category] || categoryColors['Technical'];
+  const categoryColor = categoryColors[tool.category] || 'bg-gray-100 text-gray-800';
 
   return (
-    <Link href={`/tools/${tool.slug}`} className="block h-full">
-      <Card className="h-full flex flex-col hover:border-primary-300 transition-colors group">
-        <CardHeader>
-          <div className="flex items-start justify-between gap-2">
-            <CardTitle className="group-hover:text-primary-600 transition-colors">
-              {tool.name}
-            </CardTitle>
-            <Badge className={categoryColorClass}>{tool.category}</Badge>
-          </div>
-          <CardDescription className="mt-2 line-clamp-2">
-            {tool.shortDescription}
-          </CardDescription>
-        </CardHeader>
-        <CardFooter className="mt-auto pt-4">
-          <span className="inline-flex items-center text-sm font-medium text-primary-600 group-hover:text-primary-700">
-            Open Tool
-            <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+    <Link href={`/tools/${tool.slug}`}>
+      <div className="group p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all duration-200 cursor-pointer">
+        <div className="flex items-start justify-between mb-3">\n          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${categoryColor}`}>
+            {tool.category}
           </span>
-        </CardFooter>
-      </Card>
+          <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+          {tool.name}
+        </h3>
+        <p className="text-sm text-gray-600 line-clamp-2">
+          {tool.shortDescription}
+        </p>
+      </div>
     </Link>
   );
-};
+}
