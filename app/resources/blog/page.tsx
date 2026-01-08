@@ -1,90 +1,50 @@
-import { Metadata } from "next";
-import { FileText, Calendar, ArrowRight, Clock } from "lucide-react";
-import resources from "@/data/resources.json";
-import Link from "next/link";
+import resources from '@/data/resources.json';
+import type { Resources } from '@/types';
+import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: "SEO Blog - Resources Hub",
-  description: "Latest insights, tutorials, and best practices for search engine optimization and digital marketing.",
-};
+// Type the imported JSON data
+const typedResources: Resources = resources;
 
 export default function BlogPage() {
-  const posts = resources.blog;
-
   return (
-    <div className="flex min-h-screen flex-col">
-      {/* Header Section */}
-      <section className="border-b bg-gradient-to-b from-muted/50 to-background">
-        <div className="container px-4 py-16 md:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-              <FileText className="mr-2 h-4 w-4" />
-              Insights & Tutorials
-            </div>
-            <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
-              SEO Blog
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Stay updated with the latest SEO strategies, algorithm changes, and
-              practical guides to boost your search rankings.
-            </p>
-          </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">SEO Blog</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Insights, tips, and strategies to help you master search engine optimization.
+          </p>
         </div>
-      </section>
 
-      {/* Blog Posts Grid */}
-      <main className="container flex-1 px-4 py-12">
-        {posts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-16 text-center">
-            <FileText className="mb-4 h-12 w-12 text-muted-foreground/50" />
-            <h3 className="mb-2 text-lg font-semibold">No blog posts yet</h3>
-            <p className="text-sm text-muted-foreground">
-              Check back soon for the latest SEO insights and tutorials.
-            </p>
-          </div>
-        ) : (
+        {/* Defensive check before mapping */}
+        {typedResources.blog?.length > 0 ? (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <article
+            {typedResources.blog.map((post) => (
+              <Link
                 key={post.slug}
-                className="group flex flex-col overflow-hidden rounded-lg border bg-card transition-all hover:shadow-lg"
+                href={`/resources/blog/${post.slug}`}
+                className="group"
               >
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground">
-                    {post.date && (
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-3.5 w-3.5" />
-                        {post.date}
-                      </span>
-                    )}
-                    {post.readTime && (
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3.5 w-3.5" />
-                        {post.readTime}
-                      </span>
-                    )}
-                  </div>
-                  <h2 className="mb-3 text-xl font-semibold leading-tight group-hover:text-primary transition-colors">
-                    <Link href={`/resources/blog/${post.slug}`}>
-                      {post.title}
-                    </Link>
+                <article className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 p-6 h-full">
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    {post.title}
                   </h2>
-                  <p className="mb-4 flex-1 text-muted-foreground leading-relaxed">
+                  <p className="text-gray-600 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <Link
-                    href={`/resources/blog/${post.slug}`}
-                    className="inline-flex items-center font-medium text-primary hover:text-primary/80 transition-colors"
-                  >
-                    Read More
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </article>
+                  <div className="mt-4 text-blue-600 font-medium group-hover:underline">
+                    Read more →
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500">No blog posts available at this time.</p>
+          </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }
