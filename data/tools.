@@ -1,0 +1,143 @@
+[
+  {
+    "slug": "keyword-density-checker",
+    "name": "Keyword Density Checker",
+    "category": "Data Analysis",
+    "shortDescription": "Analyze the keyword density of your content to optimize for SEO.",
+    "longDescription": "This tool helps you determine how often a specific keyword appears in your text compared to the total word count. Maintaining optimal keyword density (typically 1-3%) helps search engines understand your content's relevance without keyword stuffing.",
+    "inputs": [
+      {
+        "key": "content",
+        "label": "Content Text",
+        "type": "textarea",
+        "placeholder": "Paste your article or blog content here...",
+        "options": []
+      },
+      {
+        "key": "keyword",
+        "label": "Target Keyword",
+        "type": "text",
+        "placeholder": "Enter the keyword to analyze",
+        "options": []
+      },
+      {
+        "key": "minLength",
+        "label": "Minimum Word Length",
+        "type": "number",
+        "placeholder": "3",
+        "options": []
+      }
+    ]
+  },
+  {
+    "slug": "meta-tag-generator",
+    "name": "Meta Tag Generator",
+    "category": "Technical",
+    "shortDescription": "Generate SEO-optimized meta tags for your web pages.",
+    "longDescription": "Create properly formatted meta title and description tags that appear in search engine results. This tool ensures your meta tags follow best practices for length and keyword placement to improve click-through rates.",
+    "inputs": [
+      {
+        "key": "pageTitle",
+        "label": "Page Title",
+        "type": "text",
+        "placeholder": "Enter your page title",
+        "options": []
+      },
+      {
+        "key": "description",
+        "label": "Meta Description",
+        "type": "textarea",
+        "placeholder": "Enter a compelling description (150-160 characters recommended)",
+        "options": []
+      },
+      {
+        "key": "keywords",
+        "label": "Target Keywords",
+        "type": "text",
+        "placeholder": "keyword1, keyword2, keyword3",
+        "options": []
+      },
+      {
+        "key": "ogImage",
+        "label": "Open Graph Image URL",
+        "type": "text",
+        "placeholder": "https://example.com/og-image.jpg",
+        "options": []
+      }
+    ]
+  },
+  {
+    "slug": "serp-preview-tool",
+    "name": "SERP Preview Tool",
+    "category": "Technical",
+    "shortDescription": "Preview how your page will appear in Google search results.",
+    "longDescription": "Visualize your search engine result snippet before publishing. See how your title tag and meta description will render on desktop and mobile, ensuring they are compelling and within character limits.",
+    "inputs": [
+      {
+        "key": "title",
+        "label": "Title Tag",
+        "type": "text",
+        "placeholder": "Your page title (max 60 chars recommended)",
+        "options": []
+      },
+      {
+        "key": "description",
+        "label": "Meta Description",
+        "type": "textarea",
+        "placeholder": "Your meta description (max 160 chars recommended)",
+        "options": []
+      },
+      {
+        "key": "url",
+        "label": "URL",
+        "type": "text",
+        "placeholder": "https://example.com/your-page",
+        "options": []
+      },
+      {
+        "key": "device",
+        "label": "Preview Device",
+        "type": "select",
+        "placeholder": "Select device type",
+        "options": ["Desktop", "Mobile"]
+      }
+    ]
+  },
+  {
+    "slug": "keyword-research-tool",
+    "name": "Keyword Research Tool",
+    "category": "Relevance",
+    "shortDescription": "Discover related keywords and analyze search volume potential.",
+    "longDescription": "Enter a seed keyword to discover related search terms, long-tail variations, and content ideas. This mock tool helps you understand keyword intent and identify opportunities for content creation.",
+    "inputs": [
+      {
+        "key": "seedKeyword",
+        "label": "Seed Keyword",
+        "type": "text",
+        "placeholder": "Enter a base keyword (e.g., 'coffee maker')",
+        "options": []
+      },
+      {
+        "key": "location",
+        "label": "Target Location",
+        "type": "select",
+        "placeholder": "Select target market",
+        "options": ["United States", "United Kingdom", "Canada", "Australia", "Global"]
+      },
+      {
+        "key": "language",
+        "label": "Language",
+        "type": "select",
+        "placeholder": "Select language",
+        "options": ["English", "Spanish", "French", "German", "Portuguese"]
+      },
+      {
+        "key": "filterCommercial",
+        "label": "Include Commercial Intent",
+        "type": "select",
+        "placeholder": "Filter by intent",
+        "options": ["All Keywords", "Informational", "Commercial", "Transactional"]
+      }
+    ]
+  }
+]

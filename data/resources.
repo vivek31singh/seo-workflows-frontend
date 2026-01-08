@@ -1,0 +1,153 @@
+{
+  "glossary": [
+    {
+      "term": "SERP",
+      "definition": "Search Engine Results Page - the page displayed by a search engine in response to a query.",
+      "category": "Technical"
+    },
+    {
+      "term": "Backlink",
+      "definition": "A link from one website to another. Backlinks are important for SEO as they signal trust and authority.",
+      "category": "Authority"
+    },
+    {
+      "term": "Keyword Density",
+      "definition": "The percentage of times a keyword appears on a web page compared to the total number of words.",
+      "category": "Data Analysis"
+    },
+    {
+      "term": "Meta Tags",
+      "definition": "HTML tags that provide metadata about a web page, including title, description, and other information for search engines.",
+      "category": "Technical"
+    },
+    {
+      "term": "Long-tail Keywords",
+      "definition": "Longer, more specific keyword phrases that visitors are more likely to use when they're closer to a point-of-purchase.",
+      "category": "Relevance"
+    },
+    {
+      "term": "Domain Authority",
+      "definition": "A search engine ranking score that predicts how likely a website is to rank on search engine result pages.",
+      "category": "Authority"
+    },
+    {
+      "term": "Canonical URL",
+      "definition": "The preferred version of a web page when there are multiple URLs with similar or duplicate content.",
+      "category": "Technical"
+    },
+    {
+      "term": "CTR",
+      "definition": "Click-Through Rate - the ratio of users who click on a specific link to the number of total users who view a page.",
+      "category": "Data Analysis"
+    }
+  ],
+  "chatbots": [
+    {
+      "title": "SEO Assistant AI",
+      "description": "An intelligent chatbot that answers SEO questions and provides optimization tips for your content.",
+      "category": "General SEO"
+    },
+    {
+      "title": "Technical SEO Bot",
+      "description": "Specialized bot for diagnosing technical SEO issues including crawl errors, indexing problems, and site speed.",
+      "category": "Technical"
+    },
+    {
+      "title": "Content Strategy Helper",
+      "description": "AI-powered assistant for content planning, topic clustering, and keyword research guidance.",
+      "category": "Content Marketing"
+    },
+    {
+      "title": "Link Building Advisor",
+      "description": "Chatbot that provides strategies and tactics for building high-quality backlinks and improving domain authority.",
+      "category": "Authority"
+    },
+    {
+      "title": "Local SEO Expert",
+      "description": "Specialized chatbot for local businesses, helping with Google Business Profile optimization and local rankings.",
+      "category": "Local SEO"
+    }
+  ],
+  "blog": [
+    {
+      "slug": "complete-guide-to-on-page-seo",
+      "title": "The Complete Guide to On-Page SEO in 2024",
+      "excerpt": "Master the fundamentals of on-page optimization including meta tags, heading structure, internal linking, and content optimization best practices.",
+      "category": "Technical",
+      "date": "2024-01-15"
+    },
+    {
+      "slug": "keyword-research-strategies",
+      "title": "10 Advanced Keyword Research Strategies That Work",
+      "excerpt": "Discover proven techniques for finding high-value keywords, understanding search intent, and building a winning keyword strategy.",
+      "category": "Relevance",
+      "date": "2024-01-10"
+    },
+    {
+      "slug": "building-quality-backlinks",
+      "title": "How to Build Quality Backlinks Without Penalties",
+      "excerpt": "Learn ethical link building strategies that improve your domain authority while staying within Google's guidelines.",
+      "category": "Authority",
+      "date": "2024-01-05"
+    },
+    {
+      "slug": "technical-seo-audit-checklist",
+      "title": "Technical SEO Audit Checklist: 50 Points to Check",
+      "excerpt": "A comprehensive technical SEO checklist covering crawlability, indexing, site architecture, and performance optimization.",
+      "category": "Technical",
+      "date": "2023-12-28"
+    },
+    {
+      "slug": "seo-content-writing-tips",
+      "title": "SEO Content Writing: Tips for Creating Search-Optimized Content",
+      "excerpt": "Balance readability with SEO optimization using these content writing tips that both users and search engines love.",
+      "category": "Content",
+      "date": "2023-12-20"
+    },
+    {
+      "slug": "mobile-seo-best-practices",
+      "title": "Mobile SEO Best Practices for the Mobile-First Index",
+      "excerpt": "Optimize your website for mobile users with this guide covering responsive design, page speed, and mobile-specific SEO factors.",
+      "category": "Technical",
+      "date": "2023-12-15"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "SEO Meta in 1 Click",
+      "description": "Quickly view meta title, description, keywords, and headers for any page. Essential for competitive analysis and on-page SEO audits.",
+      "link": "https://chrome.google.com/webstore/detail/seo-meta-in-1-click",
+      "category": "Analysis"
+    },
+    {
+      "name": "Keywords Everywhere",
+      "description": "Shows search volume, CPC, and competition data on multiple websites. Perfect for keyword research directly in your browser.",
+      "link": "https://keywordseverywhere.com/",
+      "category": "Research"
+    },
+    {
+      "name": "Lighthouse",
+      "description": "Google's built-in tool for auditing performance, accessibility, best practices, and SEO. Provides actionable improvement suggestions.",
+      "link": "https://developers.google.com/web/tools/lighthouse",
+      "category": "Technical"
+    },
+    {
+      "name": "Check My Links",
+      "description": "Scan web pages for broken links. Automatically highlights valid links in green and broken links in red for quick identification.",
+      "link": "https://chrome.google.com/webstore/detail/check-my-links",
+      "category": "Technical"
+    },
+    {
+      "name": "MozBar",
+      "description": "Access SEO metrics like Domain Authority, Page Authority, and spam score while browsing. Includes on-page analysis features.",
+      "link": "https://moz.com/products/seo-toolbar",
+      "category": "Analysis"
+    },
+    {
+      "name": "Detailed SEO Extension",
+      "description": "Comprehensive SEO audit tool that displays all meta tags, headings, images, links, and structured data on a single page.",
+      "link": "https://chrome.google.com/webstore/detail/detailed-seo-extension",
+      "category": "Analysis"
+    }
+  ]
+}

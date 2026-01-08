@@ -19,3 +19,5 @@ export interface Resources {
   blog: Array<{ slug: string; title: string; excerpt: string }>;
   extensions: Array<{ name: string; description: string; link: string }>;
 }
+
+export type CategoryType = Tool["category"];
