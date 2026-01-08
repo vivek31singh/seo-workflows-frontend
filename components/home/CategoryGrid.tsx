@@ -1,91 +1,56 @@
 import Link from 'next/link';
-import { BarChart, Cpu, Database, Globe, Lock, TrendingUp } from 'lucide-react';
+import { TrendingUp, Target, Wrench, Award } from 'lucide-react';
+import { Card } from '@/components/ui/Card';
 
-const categories = [
-  {
-    name: 'Data Analysis',
-    description: 'Analyze and interpret your SEO data with powerful tools',
-    icon: Database,
-    href: '/tools?category=Data Analysis',
-    color: 'bg-blue-500',
-  },
-  {
-    name: 'Technical',
-    description: 'Optimize your website\'s technical performance',
-    icon: Cpu,
-    href: '/tools?category=Technical',
-    color: 'bg-green-500',
-  },
-  {
-    name: 'Relevance',
-    description: 'Improve content relevance and keyword targeting',
-    icon: Globe,
-    href: '/tools?category=Relevance',
-    color: 'bg-purple-500',
-  },
-  {
-    name: 'Authority',
-    description: 'Build domain authority and backlink profiles',
-    icon: TrendingUp,
-    href: '/tools?category=Authority',
-    color: 'bg-orange-500',
-  },
-  {
-    name: 'Competitor Analysis',
-    description: 'Spy on competitors and find opportunities',
-    icon: BarChart,
-    href: '/tools?category=Competitor Analysis',
-    color: 'bg-red-500',
-  },
-  {
-    name: 'Security',
-    description: 'Check and improve your website security',
-    icon: Lock,
-    href: '/tools?category=Security',
-    color: 'bg-indigo-500',
-  },
-];
+export const CategoryGrid = () => {
+  const categories = [
+    {
+      title: 'Data Analysis',
+      description: 'Analyze website performance and user behavior metrics',
+      icon: TrendingUp,
+      href: '/tools?category=Data+Analysis',
+    },
+    {
+      title: 'Relevance',
+      description: 'Optimize content relevance and keyword targeting',
+      icon: Target,
+      href: '/tools?category=Relevance',
+    },
+    {
+      title: 'Technical SEO',
+      description: 'Audit and fix technical website issues',
+      icon: Wrench,
+      href: '/tools?category=Technical',
+    },
+    {
+      title: 'Authority',
+      description: 'Build domain authority and backlink profiles',
+      icon: Award,
+      href: '/tools?category=Authority',
+    },
+  ];
 
-export default function CategoryGrid() {
   return (
-    <section className="bg-muted/50 py-16">
-      <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-foreground">
-            Explore by Category
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Find the right tools for your SEO needs across different categories
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <Link
-                key={category.name}
-                href={category.href}
-                className="group relative overflow-hidden rounded-lg border border-border bg-background p-6 transition-all hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${category.color} text-white`}>
-                    <Icon className="h-6 w-6" />
+    <section className="container px-4 py-16">
+      <h2 className="text-3xl font-bold text-center mb-12">Explore by Category</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {categories.map((category) => {
+          const Icon = category.icon;
+          return (
+            <Link key={category.title} href={category.href} className="group">
+              <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50">
+                <div className="p-6 flex flex-col items-center text-center">
+                  <div className="mb-4 p-3 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Icon size={24} />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {category.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {category.description}
-                    </p>
-                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{category.title}</h3>
+                  <p className="text-sm text-muted-foreground">{category.description}</p>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
-}
+};

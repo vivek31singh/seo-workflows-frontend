@@ -1,137 +1,64 @@
 import Link from 'next/link';
-import { Github, Twitter, Linkedin } from 'lucide-react';
 
-export default function Footer() {
+export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = [
+    {
+      title: 'Product',
+      links: [
+        { href: '/tools', label: 'Tools' },
+        { href: '/resources', label: 'Resources' },
+      ],
+    },
+    {
+      title: 'Company',
+      links: [
+        { href: '/company/about', label: 'About' },
+        { href: '/company/contact', label: 'Contact' },
+      ],
+    },
+    {
+      title: 'Legal',
+      links: [
+        { href: '/privacy', label: 'Privacy Policy' },
+        { href: '/terms', label: 'Terms of Service' },
+      ],
+    },
+  ];
+
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Brand Column */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">SEO Workflows</h3>
-            <p className="text-sm text-muted-foreground">
-              Your comprehensive directory of free SEO tools and resources to optimize your digital presence.
+    <footer className="border-t border-border/40 bg-background">
+      <div className="container py-12 md:py-16">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="col-span-2">
+            <h3 className="text-lg font-bold mb-4">SEO Workflows</h3>
+            <p className="text-sm text-muted-foreground max-w-xs">
+              A comprehensive directory of free SEO tools and resources to help you optimize your website and improve search engine rankings.
             </p>
           </div>
-
-          {/* Tools Column */}
-          <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Tools</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/tools" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  All Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools?category=Data Analysis" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Data Analysis
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools?category=Technical" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Technical SEO
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools?category=Authority" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Authority Building
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources Column */}
-          <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Resources</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/resources/glossary" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Glossary
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources/chatbots" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  AI Chatbots
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources/blog" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources/extensions" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Extensions
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company Column */}
-          <div>
-            <h4 className="mb-4 text-sm font-semibold text-foreground">Company</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/company/about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/company/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {footerLinks.map((section) => (
+            <div key={section.title}>
+              <h4 className="font-semibold mb-4">{section.title}</h4>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between border-t border-border pt-8 md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} SEO Workflows. All rights reserved.
-          </p>
-          <div className="mt-4 flex space-x-4 md:mt-0">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </div>
+        <div className="mt-12 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {currentYear} SEO Workflows. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
-}
+};
