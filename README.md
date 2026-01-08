@@ -1,2 +1,14 @@
 # seo-workflows-frontend
-Frontend-only Next.js app inspired by “SEO Workflows” built by dev agents. It provides a marketing homepage, a categorized tools directory, and interactive tool pages—all using local JSON data and client-side logic. Built with Next.js (App Router), TypeScript, and Tailwind CSS. No backend or third-party integrations.
+
+**Automated project built via Dev Agents.**
+
+This repository was initialized automatically.
+
+## Context Files
+The following documentation files contain the Golden Context for this project:
+- project_brief.md
+- technical_spec.md
+- implementation_plan.md
+- coding_guidelines.md
+
+Please refer to them for details.
