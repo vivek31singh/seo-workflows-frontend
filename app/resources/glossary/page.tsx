@@ -4,63 +4,66 @@ import resources from "@/data/resources.json";
 
 export const metadata: Metadata = {
   title: "SEO Glossary - Resources Hub",
-  description: "Comprehensive SEO terminology and definitions to help you understand industry jargon and concepts.",
+  description: "Comprehensive definitions of SEO terms, concepts, and terminology to help you understand search engine optimization.",
 };
 
 export default function GlossaryPage() {
-  const glossaryTerms = resources.glossary;
+  const glossary = resources.glossary;
 
   return (
     <div className="flex min-h-screen flex-col">
       {/* Header Section */}
-      <section className="border-b bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
-                <BookOpen className="h-6 w-6" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">SEO Glossary</h1>
-                <p className="text-gray-600">Industry terminology explained simply</p>
-              </div>
+      <section className="border-b bg-gradient-to-b from-muted/50 to-background">
+        <div className="container px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+              <BookOpen className="mr-2 h-4 w-4" />
+              SEO Knowledge Base
             </div>
+            <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
+              SEO Glossary
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Master the language of search engine optimization with our comprehensive
+              glossary of terms and definitions.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <main className="flex-1">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            {/* Search Notice */}
-            <div className="mb-8 flex items-center gap-2 rounded-lg bg-blue-50 border border-blue-200 p-4 text-sm text-blue-800">
-              <Search className="h-4 w-4 flex-shrink-0" />
-              <p>Use your browser's find function (Ctrl+F or Cmd+F) to quickly search for specific terms.</p>
+      {/* Glossary Content */}
+      <main className="container flex-1 px-4 py-12">
+        <div className="mx-auto max-w-4xl">
+          {glossary.length === 0 ? (
+            <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-16 text-center">
+              <Search className="mb-4 h-12 w-12 text-muted-foreground/50" />
+              <h3 className="mb-2 text-lg font-semibold">No glossary terms yet</h3>
+              <p className="text-sm text-muted-foreground">
+                Check back soon for comprehensive SEO definitions.
+              </p>
             </div>
-
-            {/* Glossary Terms Grid */}
-            <div className="space-y-4">
-              {glossaryTerms.map((item, index) => (
+          ) : (
+            <div className="space-y-6">
+              {glossary.map((item, index) => (
                 <article
-                  key={`${item.term}-${index}`}
-                  className="rounded-lg border bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
+                  key={index}
+                  className="group rounded-lg border bg-card p-6 transition-shadow hover:shadow-md"
                 >
-                  <h3 className="mb-2 text-lg font-semibold text-gray-900">
-                    {item.term}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">{item.definition}</p>
+                  <dt className="mb-2 flex items-start gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-sm">
+                      {item.term[0].toUpperCase()}
+                    </span>
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                      {item.term}
+                    </h3>
+                  </dt>
+                  <dd className="ml-11 text-muted-foreground leading-relaxed">
+                    {item.definition}
+                  </dd>
                 </article>
               ))}
             </div>
-
-            {glossaryTerms.length === 0 && (
-              <div className="text-center py-12">
-                <BookOpen className="mx-auto h-12 w-12 text-gray-400" />
-                <p className="mt-4 text-gray-600">No glossary terms available at this time.</p>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </main>
     </div>

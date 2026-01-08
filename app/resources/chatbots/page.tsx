@@ -13,75 +13,69 @@ export default function ChatbotsPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Header Section */}
-      <section className="border-b bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
-                <MessageSquare className="h-6 w-6" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">AI Chatbots</h1>
-                <p className="text-gray-600">Conversational AI tools for SEO workflows</p>
-              </div>
+      <section className="border-b bg-gradient-to-b from-muted/50 to-background">
+        <div className="container px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+              <Bot className="mr-2 h-4 w-4" />
+              AI Assistants
             </div>
+            <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">
+              SEO Chatbots & AI Tools
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              Leverage artificial intelligence to accelerate your SEO research,
+              content creation, and analysis workflows.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <main className="flex-1">
-        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            {/* Intro */}
-            <div className="mb-8 rounded-lg bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-100 p-6">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                  <Bot className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">AI-Powered SEO Assistance</h3>
-                  <p className="text-sm text-gray-600">
-                    Explore our collection of AI chatbots designed to help with keyword research, content optimization, technical SEO audits, and more. Each bot is specialized for specific SEO tasks.
+      {/* Chatbots Grid */}
+      <main className="container flex-1 px-4 py-12">
+        {chatbots.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-16 text-center">
+            <MessageSquare className="mb-4 h-12 w-12 text-muted-foreground/50" />
+            <h3 className="mb-2 text-lg font-semibold">No chatbots listed yet</h3>
+            <p className="text-sm text-muted-foreground">
+              Check back soon for AI-powered SEO chatbots and assistants.
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {chatbots.map((chatbot, index) => (
+              <article
+                key={index}
+                className="group flex flex-col overflow-hidden rounded-lg border bg-card transition-all hover:shadow-md"
+              >
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Bot className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold group-hover:text-primary transition-colors">
+                    {chatbot.title}
+                  </h3>
+                  <p className="flex-1 text-muted-foreground leading-relaxed">
+                    {chatbot.description}
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* Chatbots List */}
-            <div className="grid gap-4">
-              {chatbots.map((chatbot, index) => (
-                <article
-                  key={`${chatbot.title}-${index}`}
-                  className="flex items-start gap-4 rounded-lg border bg-white p-6 shadow-sm hover:shadow-md transition-all"
-                >
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 text-white">
-                    <MessageSquare className="h-6 w-6" />
+                {chatbot.link && (
+                  <div className="border-t bg-muted/30 px-6 py-4">
+                    <a
+                      href={chatbot.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                    >
+                      Try Chatbot
+                      <ExternalLink className="ml-1 h-3.5 w-3.5" />
+                    </a>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {chatbot.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">{chatbot.description}</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <button className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-                      <ExternalLink className="h-4 w-4" />
-                      Try Now
-                    </button>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            {chatbots.length === 0 && (
-              <div className="text-center py-12">
-                <MessageSquare className="mx-auto h-12 w-12 text-gray-400" />
-                <p className="mt-4 text-gray-600">No chatbots available at this time.</p>
-              </div>
-            )}
+                )}
+              </article>
+            ))}
           </div>
-        </div>
+        )}
       </main>
     </div>
   );
